@@ -14,8 +14,9 @@ class CanvasDrawer(private val widthInCells:Int, private val heightInCells:Int) 
             }
     private val ctx: CanvasRenderingContext2D = canvas.getContext("2d") as CanvasRenderingContext2D
 
-    private fun rect(x: Double, y: Double, width: Double, height: Double, color: String) {
+    private fun rect(x: Double, y: Double, width: Double, height: Double, color: String, alpha: Double = 1.0) {
         ctx.fillStyle = color
+        ctx.globalAlpha = alpha
         ctx.fillRect(x, y, width, height)
     }
 
@@ -29,6 +30,7 @@ class CanvasDrawer(private val widthInCells:Int, private val heightInCells:Int) 
     fun verticalWall(x: Int, y: Int) = rect(x * cellSize - wallSize / 2, y * cellSize - wallSize / 2,
             cellSize + wallSize / 2, wallSize, "black")
 
-    fun cell(x: Int, y: Int, color: String) = rect(x * cellSize + wallSize / 2, y * cellSize + wallSize / 2,
-            cellSize - wallSize, cellSize - wallSize, color)
+    fun cell(x: Int, y: Int, color: String, isActive: Boolean = true)
+            = rect(x * cellSize + wallSize / 2, y * cellSize + wallSize / 2,
+            cellSize - wallSize, cellSize - wallSize, color, if (isActive) 1.0 else 0.5)
 }

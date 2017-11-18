@@ -11,7 +11,7 @@ class Player(private var onCell:Cell, private val color:String) {
         return onCell == previousCell
     }
 
-    fun draw(drawer: CanvasDrawer) {
-        drawer.cell(onCell.x, onCell.y, color)
+    fun draw(drawer: CanvasDrawer, isActive: Boolean) {
+        drawer.cell(onCell.x, onCell.y, color, isActive)
     }
 }

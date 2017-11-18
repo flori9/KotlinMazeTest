@@ -20,7 +20,7 @@ class Maze {
 
     fun draw(drawer: CanvasDrawer) {
         drawer.clear()
-        players.forEach { it.draw(drawer) }
+        players.forEach { it.draw(drawer, players[currentPlayer] == it) }
         cells.forEach { it.forEach { it.draw(drawer) } }
     }
 
