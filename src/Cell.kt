@@ -33,7 +33,7 @@ class Cell(maze: Maze, val x: Int, val y: Int) {
         get() = bottomCell?.hasTopWall ?: true
         set(value) { bottomCell?.hasTopWall = value }
 
-    fun draw(drawer: CanvasDrawer) {
+    fun draw(drawer: Drawer) {
         if (hasLeftWall)
             drawer.horizontalWall(x, y)
         if (hasTopWall)

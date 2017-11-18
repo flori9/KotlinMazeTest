@@ -3,7 +3,7 @@ import org.w3c.dom.HTMLCanvasElement
 import kotlin.browser.document
 import kotlin.js.Math
 
-class CanvasDrawer(private val widthInCells:Int, private val heightInCells:Int) {
+class CanvasDrawer(private val widthInCells:Int, private val heightInCells:Int) : Drawer {
     private val cellSize: Double = 40.0
     private val wallSize: Double = 4.0
 
@@ -20,17 +20,17 @@ class CanvasDrawer(private val widthInCells:Int, private val heightInCells:Int) 
         ctx.fillRect(x, y, width, height)
     }
 
-    fun clear() {
+    override fun clear() {
         rect(0.0, 0.0, canvas.width.toDouble(), canvas.height.toDouble(), "white")
     }
 
-    fun horizontalWall(x: Int, y: Int) = rect(x * cellSize - wallSize / 2, y * cellSize - wallSize / 2,
+    override fun horizontalWall(x: Int, y: Int) = rect(x * cellSize - wallSize / 2, y * cellSize - wallSize / 2,
             wallSize, cellSize + wallSize / 2, "black")
 
-    fun verticalWall(x: Int, y: Int) = rect(x * cellSize - wallSize / 2, y * cellSize - wallSize / 2,
+    override fun verticalWall(x: Int, y: Int) = rect(x * cellSize - wallSize / 2, y * cellSize - wallSize / 2,
             cellSize + wallSize / 2, wallSize, "black")
 
-    fun cell(x: Int, y: Int, color: String, isActive: Boolean = true)
+    override fun cell(x: Int, y: Int, color: String, isActive: Boolean)
             = rect(x * cellSize + wallSize / 2, y * cellSize + wallSize / 2,
             cellSize - wallSize, cellSize - wallSize, color, if (isActive) 1.0 else 0.5)
 }

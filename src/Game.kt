@@ -6,7 +6,7 @@ fun main(args: Array<String>) {
 
 class Game {
     private val maze: Maze = Maze()
-    private val drawSystem: CanvasDrawer = CanvasDrawer(maze.width, maze.height)
+    private val drawSystem: Drawer = CanvasDrawer(maze.width, maze.height)
 
     init {
         KeyboardInputHandler({ onInput(it) })

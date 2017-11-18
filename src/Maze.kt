@@ -18,7 +18,7 @@ class Maze {
         cells[1][1].hasRightWall = true
     }
 
-    fun draw(drawer: CanvasDrawer) {
+    fun draw(drawer: Drawer) {
         drawer.clear()
         players.forEach { it.draw(drawer, players[currentPlayer] == it) }
         cells.forEach { it.forEach { it.draw(drawer) } }
